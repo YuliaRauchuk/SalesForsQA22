@@ -34,7 +34,7 @@ public abstract class BaseTest {
     protected AccountDetailsPage accountDetailsPage;
     protected EntityBasePage entityBasePage;
     protected NewAccountsModal newAccountsModal;
-//    protected ContactDetailsPage contactDetailsPage;
+    protected ContactDetailsPage contactDetailsPage;
     protected NewContactsModal newContactsModal;
 @BeforeClass(alwaysRun = true)
 public void setUp(ITestContext testContext) {
