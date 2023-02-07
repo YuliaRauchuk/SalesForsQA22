@@ -1,0 +1,52 @@
+package pages;
+
+import elements.RecordLogOutItem;
+import enums.LeadSource;
+import enums.Salutation;
+import models.Contacts;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class ContactDetailsPage extends BasePage    {
+
+    private final static By CHANGE_OWNER_BUTTON = By.xpath("//button[text()='Change Owner']");
+
+    public Contacts getContactDetails()  {
+        Contacts.ContactsBuilder contact = Contacts.builder()
+                .setFirstName(new RecordLogOutItem(driver, "FirstName").getValue())
+                .setLastName(new RecordLogOutItem(driver, "LastName").getValue())
+                .setAccountName(new RecordLogOutItem(driver, "AccountName").getValue())
+                .setReportsTo(new RecordLogOutItem(driver, "ReportsTo").getValue())
+
+                .setSalutation(Salutation.fromString(new RecordLogOutItem(driver, "Salutation").getValue())
+                .setTitle(new RecordLogOutItem(driver, "Title").getValue())
+                .setPhone(new RecordLogOutItem(driver, "Phone").getValue())
+                .setMobile(new RecordLogOutItem(driver, "Mobile").getValue())
+                .setEmail(new RecordLogOutItem(driver, "Email").getValue())
+                .setMailingAddress(new RecordLogOutItem(driver, "Mailing Address").getValue())
+                        .setMailingCity(new RecordLogOutItem(driver, "Mailing City").getValue())
+                        .setMailingProvince(new RecordLogOutItem(driver, "Mailing Province").getValue())
+                        .setOtherCountry(new RecordLogOutItem(driver, "Other Country").getValue())
+                .setOtherCity(new RecordLogOutItem(driver, "Other City").getValue())
+                        .setOtherStreet(new RecordLogOutItem(driver, "Other Street").getValue())
+                        .setOtherStateProvince(new RecordLogOutItem(driver, "OtherStateProvince").getValue())
+                .setFax(new RecordLogOutItem(driver, "Fax").getValue())
+                .setDepartment(new RecordLogOutItem(driver, "Department").getValue())
+                .setHomePhone(new RecordLogOutItem(driver, "Home Phone").getValue())
+                .setLeadSource(LeadSource.fromString(new RecordLogOutItem(driver, "Lead Source").getValue()))
+                .setOtherPhone(new RecordLogOutItem(driver, "Other Phone").getValue())
+                        .setHomePhone(new RecordLogOutItem(driver, "Home Phone").getValue())
+                .setAsstPhone(new RecordLogOutItem(driver, "Asst. Phone").getValue())
+                .setAssistant(new RecordLogOutItem(driver, "Assistant").getValue())
+                .setBirthdate(new RecordLogOutItem(driver, "Birthdate").getValue())
+                .setDescription(new RecordLogOutItem(driver, "Description").getValue());
+        return contact.build();
+    }
+
+    public void waitChangeOwnerButtonIsDisplay()    {
+        waitForElementDisplayed(CHANGE_OWNER_BUTTON);
+    }
+    public ContactDetailsPage(WebDriver driver) {
+        super(driver);
+    }
+}
